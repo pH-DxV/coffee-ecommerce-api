@@ -7,5 +7,7 @@ public record OrderDTO(
     Long idCustomer,
     List<CustomerItemDTO> items
 
+    // teste2
+
 ) {
 } 
