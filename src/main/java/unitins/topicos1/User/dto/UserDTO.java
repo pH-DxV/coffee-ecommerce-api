@@ -6,6 +6,8 @@ import jakarta.validation.constraints.Size;
 
 public record UserDTO (
     
+    //teste
+
     @NotBlank(message = "Username is Required!")
     @Size(min = 3, max = 20, message = "The Username size must be between 3 and 20 characters!")
     String username,
