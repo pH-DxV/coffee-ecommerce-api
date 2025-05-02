@@ -96,7 +96,31 @@ public class CoffeeResource {
         return Response.status(Status.NOT_FOUND).build();
     }
 
+    /*
+        ==== IMPLEMENTAR PARA PODER ADICIONAR IMAGEM ====
 
+
+    @PATCH
+    @Path("/imagem/upload")
+    @Consumes(MediaType.MULTIPART_FORM_DATA)
+    //@RolesAllowed("Funcionario")
+    public Response salvarImagem(@MultipartForm TenisImageForm form) {
+        fileService.upload(form.getId(), form.getNomeImagem(), form.getImagem());
+        return Response.noContent().build();
+    }
+
+
+    @GET
+    @Path("/image/download/{nomeImagem}")
+    @Produces(MediaType.APPLICATION_OCTET_STREAM)
+    //@RolesAllowed({"Cliente", "Funcionario"})
+    public Response download(@PathParam("nomeImagem") String nomeImagem) {
+        return Response.ok(fileService.download(nomeImagem))
+               .header("Content-Disposition", "attachment;filename=" + nomeImagem).build();
+    }
+               
+        ==================================================
+    */
 
 
 

@@ -35,7 +35,7 @@ public class CustomerRepository implements PanacheRepository<Customer>{
 
     public Customer findByIdUser(Long idUser){
 
-        return find("user.id = ?1", idUser.firstResult();
+        return find("user.id = ?1", idUser).firstResult();
   
     }
 

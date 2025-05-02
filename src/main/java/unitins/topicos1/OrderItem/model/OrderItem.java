@@ -3,6 +3,7 @@ package unitins.topicos1.OrderItem.model;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import unitins.topicos1.Coffee.model.Coffee;
 import unitins.topicos1.DefaultEntity.model.DefaultEntity;
 
 @Entity

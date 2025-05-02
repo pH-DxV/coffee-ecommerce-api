@@ -6,7 +6,10 @@ import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.Context;
 import jakarta.ws.rs.core.MediaType;
+import unitins.topicos1.Customer.service.CustomerService;
+import unitins.topicos1.Jwt.service.JwtService;
 import unitins.topicos1.User.repository.UserRepository;
+import unitins.topicos1.User.service.UserService;
 
 @Path("/customers")
 @Produces(MediaType.APPLICATION_JSON)

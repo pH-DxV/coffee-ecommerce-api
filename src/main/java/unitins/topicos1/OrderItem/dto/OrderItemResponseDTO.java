@@ -18,9 +18,9 @@ public record OrderItemResponseDTO(
 
             item.getId(),
             item.getValue(),
-            item.getQuantity();
+            item.getQuantity()
 
-        )    
+        );
 
     }
 
