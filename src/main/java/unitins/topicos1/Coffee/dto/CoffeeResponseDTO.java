@@ -1,6 +1,7 @@
 package unitins.topicos1.Coffee.dto;
 
 import unitins.topicos1.Coffee.model.Coffee;
+import unitins.topicos1.Mark.dto.MarkResponseDTO;
 
 public record CoffeeResponseDTO(
 
@@ -10,8 +11,8 @@ public record CoffeeResponseDTO(
     Double weight,
     Double pricePurchase,
     Double priceSale,
-    MarkResponseDTO mark,
-    CategoryResponseDTO category,
+    MarkResponseDTO mark
+    //CategoryResponseDTO category,
 
 
 ) {
@@ -25,12 +26,12 @@ public record CoffeeResponseDTO(
             coffee.getWeight(),
             coffee.getPricePurchase(),
             coffee.getPriceSale(),
+            
+            MarkResponseDTO.valueOf(coffee.getMark())
             /*
-            MarkResponseDTO.valueOf(coffe.getMark()),
             CategoryResponseDTO.valueOf(coffe.getCategory());
-
-
             */
+            );
 
 
     }

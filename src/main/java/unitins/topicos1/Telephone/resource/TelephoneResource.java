@@ -14,8 +14,8 @@ import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import unitins.topicos1.Telephone.dto.TelephoneDTO;
-import unitins.topicos1.Telephone.model.Telephone;
 import unitins.topicos1.Telephone.service.TelephoneService;
+import unitins.topicos1.validation.GlobalExceptionMapper;
 
 @Path("/telephones")
 @Produces(MediaType.APPLICATION_JSON)
@@ -25,7 +25,7 @@ public class TelephoneResource {
     @Inject
     TelephoneService service;
 
-    private static final Logger LOG = Logger.getLogger(ColorResource.class);
+    private static final Logger LOG = Logger.getLogger(GlobalExceptionMapper.class);
 
     @POST
     public Response create(TelephoneDTO dto){
@@ -89,9 +89,5 @@ public class TelephoneResource {
         LOG.infof("Running findByDdd method. Ddd: %s", ddd.toString());
         return Response.ok(service.findByDdd(ddd)).build();
     }
-
-
-
-
 
 }
