@@ -1,12 +1,12 @@
-package unitins.topicos1.Order.dto;
+package unitins.topicos1.CustomerOrder.dto;
 
 import java.util.List;
 
 import unitins.topicos1.Customer.dto.CustomerResponseDTO;
-import unitins.topicos1.Order.model.Order;
+import unitins.topicos1.CustomerOrder.model.CustomerOrder;
 import unitins.topicos1.OrderItem.dto.OrderItemResponseDTO;
 
-public record OrderResponseDTO (
+public record CustomerOrderResponseDTO (
 
     Long id,
     CustomerResponseDTO customer,
@@ -15,20 +15,20 @@ public record OrderResponseDTO (
 
 ){
 
-    public static OrderResponseDTO valueOf (Order order){
+    public static CustomerOrderResponseDTO valueOf (CustomerOrder customerOrder){
 
-        List<OrderItemResponseDTO> list = order.getItems()
+        List<OrderItemResponseDTO> list = customerOrder.getItems()
                                             .stream()
                                             .map(OrderItemResponseDTO::valueOf)
                                             .toList();
 
-        return new OrderResponseDTO(
+        return new CustomerOrderResponseDTO(
             
-            order.getId(),
+            customerOrder.getId(),
             
-            CustomerResponseDTO.valueOf(order.getCustomer()),
+            CustomerResponseDTO.valueOf(customerOrder.getCustomer()),
             
-            order.getTotalValue(),
+            customerOrder.getTotalValue(),
             
             list);
             

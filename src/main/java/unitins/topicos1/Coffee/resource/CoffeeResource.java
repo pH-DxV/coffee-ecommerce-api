@@ -17,6 +17,8 @@ import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.Response.Status;
 import unitins.topicos1.Coffee.dto.CoffeeDTO;
+import unitins.topicos1.Coffee.service.CoffeeService;
+import unitins.topicos1.validation.GlobalExceptionMapper;
 
 @Path("/coffee")
 @Produces(MediaType.APPLICATION_JSON)
@@ -26,10 +28,7 @@ public class CoffeeResource {
     @Inject
     public CoffeeService service;
 
-    @Inject
-    public CoffeeFileServiceImpl fileService;
-
-    private static final Logger LOG = Logger.getLogger(ColorResource.class);
+    private static final Logger LOG = Logger.getLogger(GlobalExceptionMapper.class);
 
     @POST
     public Response create(@PathParam("id")Long id, CoffeeDTO dto){
@@ -53,20 +52,15 @@ public class CoffeeResource {
     }
 
     @GET
-    public Response findAll(@QueryParam("page")@DefaultValue("0") int page,
-                            @QueryParam("pageSize") @DefaultValue("100") int pageSize){
-
-                                return Response.ok(service.findAll(page, pageSize)).build();
+    public Response findAll(@QueryParam("page") @DefaultValue("-1") int page,
+                            @QueryParam("pageSize") @DefaultValue("-1") int pageSize) {
     
-    }
-
-    @GET
-    public Response findAll(){
-
-        LOG.info("Running FindAll");
-
+        if (page >= 0 && pageSize > 0) {
+            return Response.ok(service.findAll(page, pageSize)).build();
+        }
+    
+        LOG.info("Running FindAll without pagination");
         return Response.ok(service.findAll()).build();
-
     }
 
     @GET

@@ -1,4 +1,4 @@
-package unitins.topicos1.Order.model;
+package unitins.topicos1.CustomerOrder.model;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -13,7 +13,7 @@ import unitins.topicos1.DefaultEntity.model.DefaultEntity;
 import unitins.topicos1.OrderItem.model.OrderItem;
 
 @Entity
-public class Order extends DefaultEntity{
+public class CustomerOrder extends DefaultEntity{
     
     private LocalDateTime date;
     private Double totalValue;
@@ -23,7 +23,7 @@ public class Order extends DefaultEntity{
    private Customer customer;
 
    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-   @JoinColumn(name = "id_order")
+   @JoinColumn(name = "id_customer_order")
     private List<OrderItem> items;
 
 

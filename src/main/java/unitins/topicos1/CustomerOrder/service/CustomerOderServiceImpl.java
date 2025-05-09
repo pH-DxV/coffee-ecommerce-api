@@ -1,4 +1,4 @@
-package unitins.topicos1.Order.service;
+package unitins.topicos1.CustomerOrder.service;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -12,26 +12,24 @@ import unitins.topicos1.Coffee.model.Coffee;
 import unitins.topicos1.Coffee.repository.CoffeeRepository;
 import unitins.topicos1.Coffee.service.CoffeeService;
 import unitins.topicos1.Customer.repository.CustomerRepository;
-import unitins.topicos1.Order.dto.OrderDTO;
-import unitins.topicos1.Order.dto.OrderResponseDTO;
-import unitins.topicos1.Order.model.Order;
-import unitins.topicos1.Order.repository.OrderRepository;
+import unitins.topicos1.CustomerOrder.dto.CustomerOrderDTO;
+import unitins.topicos1.CustomerOrder.dto.CustomerOrderResponseDTO;
+import unitins.topicos1.CustomerOrder.model.CustomerOrder;
+import unitins.topicos1.CustomerOrder.repository.CustomerOrderRepository;
 import unitins.topicos1.OrderItem.dto.OrderItemDTO;
 import unitins.topicos1.OrderItem.model.OrderItem;
 import unitins.topicos1.validation.ValidationException;
 
 @ApplicationScoped
-public class OderServiceImpl implements OrderService{
+public class CustomerOderServiceImpl implements CustomerOrderService{
     
     @Inject
-    public OrderRepository repository;
+    public CustomerOrderRepository repository;
 
     @Inject
-
     public CoffeeRepository coffeeRepository;
 
     @Inject
-
     public CoffeeService coffeeService;
 
     @Inject
@@ -40,13 +38,13 @@ public class OderServiceImpl implements OrderService{
 
     @Override
     @Transactional
-    public OrderResponseDTO create(@Valid OrderDTO dto) {
+    public CustomerOrderResponseDTO create(@Valid CustomerOrderDTO dto) {
 
-        Order order = new Order();
+        CustomerOrder customerOrder = new CustomerOrder();
 
-        order.setDate(LocalDateTime.now());
-        order.setCustomer(customerRepository.findById(dto.idCustomer()));
-        order.setTotalValue(0d);
+        customerOrder.setDate(LocalDateTime.now());
+        customerOrder.setCustomer(customerRepository.findById(dto.idCustomer()));
+        customerOrder.setTotalValue(0d);
 
         List<OrderItem> items = new ArrayList<OrderItem>();
 
@@ -66,7 +64,7 @@ public class OderServiceImpl implements OrderService{
                 items.add(itemUnit);
                 
                 // Order Total Value
-                order.setTotalValue( (order.getTotalValue() + (itemUnit.getValue() * itemUnit.getQuantity() ) ) );
+                customerOrder.setTotalValue( (customerOrder.getTotalValue() + (itemUnit.getValue() * itemUnit.getQuantity() ) ) );
 
                 // CoffeeService.updateStock(itemDTO.idCoffee(), itemDTO.quantity());
 
@@ -85,44 +83,44 @@ public class OderServiceImpl implements OrderService{
 
         }
         
-        order.setItems(items);
+        customerOrder.setItems(items);
 
-        repository.persist(order);
+        repository.persist(customerOrder);
 
-        return OrderResponseDTO.valueOf(order);
+        return CustomerOrderResponseDTO.valueOf(customerOrder);
 
     }
 
     @Override
-    public OrderResponseDTO findById (Long id){
+    public CustomerOrderResponseDTO findById (Long id){
 
-        Order order= repository.findById (id);
+        CustomerOrder customerOrder= repository.findById (id);
 
-        if ( order != null)
+        if ( customerOrder != null)
 
-            return OrderResponseDTO.valueOf(order);
+            return CustomerOrderResponseDTO.valueOf(customerOrder);
 
         return null;
 
     }
 
     @Override
-    public List<OrderResponseDTO> findAll() {
+    public List<CustomerOrderResponseDTO> findAll() {
 
         return repository
                 .listAll()
                 .stream()
-                .map(OrderResponseDTO::valueOf).toList();
+                .map(CustomerOrderResponseDTO::valueOf).toList();
 
     }
 
     @Override
-    public List<OrderResponseDTO> findByCustomer (Long idCustomer){
+    public List<CustomerOrderResponseDTO> findByCustomer (Long idCustomer){
 
-        List<OrderResponseDTO> list = repository
+        List<CustomerOrderResponseDTO> list = repository
                                         .findByCustomer(idCustomer)
                                         .stream()
-                                        .map(e -> OrderResponseDTO.valueOf(e)).toList();
+                                        .map(e -> CustomerOrderResponseDTO.valueOf(e)).toList();
         
         if (list != null){
 

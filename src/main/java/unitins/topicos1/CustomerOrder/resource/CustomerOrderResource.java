@@ -1,4 +1,4 @@
-package unitins.topicos1.Order.resource;
+package unitins.topicos1.CustomerOrder.resource;
 
 import org.jboss.logging.Logger;
 
@@ -11,22 +11,22 @@ import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
-import unitins.topicos1.Order.dto.OrderDTO;
-import unitins.topicos1.Order.service.OrderService;
+import unitins.topicos1.CustomerOrder.dto.CustomerOrderDTO;
+import unitins.topicos1.CustomerOrder.service.CustomerOrderService;
 import unitins.topicos1.validation.GlobalExceptionMapper;
 
 @Path ("/orders")
 @Produces (MediaType.APPLICATION_JSON)
 @Consumes (MediaType.APPLICATION_JSON)
-public class OrderResource {
+public class CustomerOrderResource {
 
     @Inject
-    public OrderService service;
+    public CustomerOrderService service;
 
     private static final Logger LOG = Logger.getLogger (GlobalExceptionMapper.class);
 
     @POST
-    public Response create (OrderDTO dto){
+    public Response create (CustomerOrderDTO dto){
 
         LOG.info ("Running create");
         LOG.debugf ("DTO: %s", dto);
@@ -53,6 +53,7 @@ public class OrderResource {
     }
 
     @GET
+    @Path("/search/customer/{idCustomer}")
     public Response findByCustomer (@PathParam ("idCustomer") Long idCustomer ){
         
         LOG.infof("Running findByCustomer method. IdCustomer: %s", idCustomer.toString());
@@ -60,9 +61,5 @@ public class OrderResource {
         return Response.ok(service.findByCustomer(idCustomer)).build();
     
     }
-
-
-
-
 
 }

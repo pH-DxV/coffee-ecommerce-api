@@ -4,7 +4,9 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import unitins.topicos1.Category.model.Category;
 import unitins.topicos1.DefaultEntity.model.DefaultEntity;
+import unitins.topicos1.Mark.model.Mark;
 
 
 @Entity

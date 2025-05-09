@@ -10,7 +10,6 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
-import lombok.Data;
 import unitins.topicos1.Address.model.Address;
 import unitins.topicos1.DefaultEntity.model.DefaultEntity;
 import unitins.topicos1.Telephone.model.Telephone;

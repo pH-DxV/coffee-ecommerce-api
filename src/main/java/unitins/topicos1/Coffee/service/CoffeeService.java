@@ -12,15 +12,13 @@ public interface CoffeeService {
 
     public boolean delete(Long id);
 
-    public void update(Long id, CoffeeDTO);
+    public void update(Long id, CoffeeDTO dto);
 
     public CoffeeResponseDTO findById(Long id);
 
     public List<CoffeeResponseDTO> findAll(int page, int pageSize);
 
     public List<CoffeeResponseDTO> findAll();
-
-    public CoffeeResponseDTO saveImage(Long id, String imageName);
 
     public void updateStock(Long id, int quantityPurchased);
 
