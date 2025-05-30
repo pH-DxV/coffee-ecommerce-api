@@ -15,6 +15,8 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.Matchers.hasSize;
 
+// teste commit branch nova
+
 @QuarkusTest
 public class CustomerResourceTest {
 
