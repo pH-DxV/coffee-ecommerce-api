@@ -3,11 +3,7 @@ package unitins.topicos1.resource;
 import io.quarkus.test.junit.QuarkusTest;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import unitins.topicos1.Customer.dto.CustomerDTO;
-import unitins.topicos1.Customer.dto.CustomerUpdateDTO;
-import unitins.topicos1.User.dto.UserDTO;
 
 import java.time.LocalDate;
 
